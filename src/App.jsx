@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Item } from "./components/Item";
-
-const x_limit = document.documentElement.clientWidth - 10;
-const Y_default = -10;
+import { ITEM_SIZE, X_LIMIT, Y_START_DEFAULT } from "./constants";
 
 function randomInteger(min, max) {
 	let rand = min + Math.random() * (max + 1 - min);
@@ -15,7 +13,7 @@ function App() {
 	const [items, setItems] = useState([]);
 
 	function deleteItem(deleted) {
-		// console.log("ITEMs", items);
+		console.log("ITEMs", items);
 		setItems((prev) => prev.filter((item) => item.id !== deleted.id));
 		// console.log("DELETE ITEM", deleted.id, items);
 	}
@@ -30,7 +28,7 @@ function App() {
 					{
 						id,
 						speed: randomInteger(200, 600),
-						pos_x: randomInteger(5, x_limit),
+						pos_x: randomInteger(ITEM_SIZE / 2, X_LIMIT),
 					},
 				]);
 			}
@@ -47,7 +45,7 @@ function App() {
 					id={item.id}
 					speed={item.speed}
 					pos_x={item.pos_x}
-					pos_y={Y_default}
+					pos_y={Y_START_DEFAULT}
 					deleteItem={deleteItem}
 				/>
 			))}

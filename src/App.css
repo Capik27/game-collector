@@ -2,6 +2,16 @@
   position: relative;
 }
 
+.stats{
+  position: absolute;
+  left: 5px;
+  bottom: 20px;
+  color:rgba(0, 0, 0, 0.288)
+}
+.stats span{
+  display: block;
+}
+
 .item{
   position: absolute;
   width: 10px;
@@ -10,4 +20,10 @@
   border: 1px solid black;
   box-sizing: border-box;
   background-color: black;
+}
+
+.detector{
+  position: absolute;
+  background-color: red;
+  height: 5px;
 }
