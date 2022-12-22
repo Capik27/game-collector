@@ -1,0 +1,13 @@
+.App{
+  position: relative;
+}
+
+.item{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  background-color: black;
+}
