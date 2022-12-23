@@ -23,7 +23,6 @@ export function Ball(props: BallProps) {
 		const ball = document.getElementById(id);
 
 		function destroyBall() {
-			// console.log("ball end", x, detector);
 			ball?.removeEventListener("transitionend", destroyBall);
 			setDestroyed(true);
 		}

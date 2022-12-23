@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./App.css";
 import { Ball } from "./components/Ball";
+import { Restart } from "./components/Restart";
 import {
 	ITEM_SIZE,
 	X_LIMIT,
@@ -10,6 +11,7 @@ import {
 	SPEED_A,
 	SPEED_B,
 	GAME_OVER,
+	GLOBAL_H,
 } from "./constants";
 
 function randomInteger(min, max) {
@@ -62,6 +64,8 @@ function App() {
 				setCount((prev) => prev + item_count);
 			}, randomInteger(1, 3) * 1000);
 			return () => clearTimeout(timer);
+		} else {
+			setItems([]);
 		}
 	}, [count]);
 
@@ -79,19 +83,7 @@ function App() {
 					deleteItem={deleteItem}
 				/>
 			))}
-			{missed >= GAME_OVER && (
-				<div
-					style={{
-						display: "flex",
-						height: Y_LIMIT,
-						justifyContent: "center",
-						alignItems: "center",
-						fontSize: 20,
-					}}
-				>
-					Game Over
-				</div>
-			)}
+			{missed >= GAME_OVER && <Restart reload={setCount} />}
 		</>
 	);
 }

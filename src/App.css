@@ -10,16 +10,6 @@
   display: block;
 }
 
-.item{
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1px solid black;
-  box-sizing: border-box;
-  background-color: black;
-}
-
 .detector{
   z-index: 1;
   position: absolute;
@@ -39,6 +29,13 @@
   background-color: #000;
 }
 
+.gameover{
+  opacity: 0;
+  position: absolute;
+  left: 5px;
+  bottom: 105px;
+  animation: fall 1s linear forwards;
+}
 
 kek{
   animation: fall 4s linear forwards;
@@ -46,7 +43,14 @@ kek{
   transition-property: transform;
   transition-duration: 9s;
 }
+
 @keyframes fall{
-  from{top: -10px}
-  to{top: 600px}
+  from{
+    left: -100px;
+    opacity: 0;
+  }
+  to{
+    left: 5px;
+    opacity: 1;
+  }
 }

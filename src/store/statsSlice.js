@@ -11,6 +11,12 @@ const statsSlice = createSlice({
 	name: "stats",
 	initialState,
 	reducers: {
+		resetStats(state) {
+			state.collected = 0;
+			state.missed = 0;
+			state.total = 0;
+			state.winrate = "";
+		},
 		addPoint(state) {
 			state.collected = state.collected + 1;
 			state.total = state.collected + state.missed;
@@ -31,4 +37,4 @@ const statsSlice = createSlice({
 });
 
 export default statsSlice.reducer;
-export const { addPoint, missPoint } = statsSlice.actions;
+export const { addPoint, missPoint, resetStats } = statsSlice.actions;
