@@ -9,12 +9,12 @@ import {
 } from "../constants";
 import { setCoords } from "../store/coordsSlice";
 
+const size =
+	GLOBAL_W > 600 ? (GLOBAL_W > 800 ? (GLOBAL_W > 1000 ? 100 : 80) : 60) : 40;
+
 export function Detector() {
 	const dispatch = useDispatch();
 	const [x, setX] = useState(X_LIMIT / 2);
-
-	const size =
-		GLOBAL_W > 600 ? (GLOBAL_W > 800 ? (GLOBAL_W > 1000 ? 100 : 80) : 60) : 40;
 
 	const mouseMoveHandler = (event: any) => {
 		const cursor_posX = event.clientX;
