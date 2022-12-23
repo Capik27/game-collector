@@ -9,4 +9,6 @@ export const Y_LIMIT: number = GLOBAL_H - DETECTOR_HEIGHT * 4;
 export const X_LIMIT: number = GLOBAL_W - ITEM_SIZE / 2;
 
 export const SPEED_A: number = 200;
-export const SPEED_B: number = 800;
+export const SPEED_B: number = 700;
+
+export const GAME_OVER: number = 10;

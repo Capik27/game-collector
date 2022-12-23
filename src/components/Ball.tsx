@@ -60,7 +60,6 @@ export function Ball(props: BallProps) {
 		const x1_limit = detector_pos.x1 - ITEM_SIZE / 2;
 		const x2_limit = detector_pos.x2 + ITEM_SIZE / 2;
 		const item_center = x + ITEM_SIZE / 2;
-
 		return item_center >= x1_limit && item_center <= x2_limit;
 	}
 

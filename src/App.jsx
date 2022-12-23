@@ -9,6 +9,7 @@ import {
 	Y_START_DEFAULT,
 	SPEED_A,
 	SPEED_B,
+	GAME_OVER,
 } from "./constants";
 
 function randomInteger(min, max) {
@@ -17,7 +18,7 @@ function randomInteger(min, max) {
 }
 
 function App() {
-	const { winrate } = useSelector((state) => state.stats);
+	const { winrate, missed } = useSelector((state) => state.stats);
 	const [count, setCount] = useState(0);
 	const [items, setItems] = useState([]);
 
@@ -29,7 +30,9 @@ function App() {
 	function createBall() {
 		const id = randomInteger(1, 1000) + "-" + new Date().toISOString();
 		const lowSpeed = SPEED_A + count > SPEED_B ? SPEED_B : SPEED_A + count;
-		const speed = randomInteger(lowSpeed, SPEED_B);
+		const highSpeed =
+			SPEED_B - (SPEED_A + (count > SPEED_A ? SPEED_A : count) * -1);
+		const speed = randomInteger(lowSpeed, highSpeed);
 		const target = Y_LIMIT + Math.abs(Y_START_DEFAULT);
 		const x = randomInteger(ITEM_SIZE / 2, X_LIMIT);
 		const time = target / speed;
@@ -38,26 +41,28 @@ function App() {
 	}
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			const max_count =
-				winrate > 70 ? (winrate > 80 ? (winrate > 90 ? 6 : 5) : 4) : 3;
-			const item_count = randomInteger(1, max_count);
-			for (let i = 0; i < item_count; i++) {
-				const ball = createBall();
-				setItems((prev) => [
-					...prev,
-					{
-						id: ball.id,
-						speed: ball.speed,
-						target: ball.target,
-						time: ball.time,
-						x: ball.x,
-					},
-				]);
-			}
-			setCount((prev) => prev + item_count);
-		}, randomInteger(1, 3) * 1000);
-		return () => clearTimeout(timer);
+		if (missed < GAME_OVER) {
+			const timer = setTimeout(() => {
+				const max_count =
+					winrate > 70 ? (winrate > 80 ? (winrate > 90 ? 6 : 5) : 4) : 3;
+				const item_count = randomInteger(1, max_count);
+				for (let i = 0; i < item_count; i++) {
+					const ball = createBall();
+					setItems((prev) => [
+						...prev,
+						{
+							id: ball.id,
+							speed: ball.speed,
+							target: ball.target,
+							time: ball.time,
+							x: ball.x,
+						},
+					]);
+				}
+				setCount((prev) => prev + item_count);
+			}, randomInteger(1, 3) * 1000);
+			return () => clearTimeout(timer);
+		}
 	}, [count]);
 
 	return (
@@ -74,6 +79,19 @@ function App() {
 					deleteItem={deleteItem}
 				/>
 			))}
+			{missed >= GAME_OVER && (
+				<div
+					style={{
+						display: "flex",
+						height: Y_LIMIT,
+						justifyContent: "center",
+						alignItems: "center",
+						fontSize: 20,
+					}}
+				>
+					Game Over
+				</div>
+			)}
 		</>
 	);
 }
