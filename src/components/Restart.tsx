@@ -11,8 +11,11 @@ export function Restart({ reload }: any) {
 	};
 
 	return (
-		<div className="gameover">
-			<button onClick={restartHandler}>Restart</button>
-		</div>
+		<>
+			<div className="gameover">
+				<button onClick={restartHandler}>Restart</button>
+			</div>
+			<div className="mask" />
+		</>
 	);
 }

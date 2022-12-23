@@ -4,7 +4,7 @@ const initialState = {
 	collected: 0,
 	missed: 0,
 	total: 0,
-	winrate: "",
+	winrate: 0,
 };
 
 const statsSlice = createSlice({
@@ -15,7 +15,7 @@ const statsSlice = createSlice({
 			state.collected = 0;
 			state.missed = 0;
 			state.total = 0;
-			state.winrate = "";
+			state.winrate = 0;
 		},
 		addPoint(state) {
 			state.collected = state.collected + 1;

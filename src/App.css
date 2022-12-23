@@ -30,11 +30,22 @@
 }
 
 .gameover{
+  z-index: 3;
   opacity: 0;
   position: absolute;
   left: 5px;
   bottom: 105px;
   animation: fall 1s linear forwards;
+}
+
+.mask{
+  z-index: 2;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  animation: mask 1s linear forwards;
 }
 
 kek{
@@ -52,5 +63,14 @@ kek{
   to{
     left: 5px;
     opacity: 1;
+  }
+}
+
+@keyframes mask{
+  from{
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to{
+    background-color: rgba(0, 0, 0, 0.144);
   }
 }

@@ -1,5 +1,9 @@
-export const GLOBAL_W = document.documentElement.clientWidth;
-export const GLOBAL_H = document.documentElement.clientHeight;
+export const {width:GLOBAL_W,height: GLOBAL_H} = getClientWH()
+
+export function getClientWH(){
+    return {width: document.documentElement.clientWidth, height: document.documentElement.clientHeight}
+}
+
 export const PERIOD = 40;
 export const DETECTOR_HEIGHT: number = 5;
 export const ITEM_SIZE: number = 10;
@@ -11,4 +15,4 @@ export const X_LIMIT: number = GLOBAL_W - ITEM_SIZE / 2;
 export const SPEED_A: number = 200;
 export const SPEED_B: number = 700;
 
-export const GAME_OVER: number = 10;
+export const GAME_OVER: number = 30;

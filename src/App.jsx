@@ -11,7 +11,6 @@ import {
 	SPEED_A,
 	SPEED_B,
 	GAME_OVER,
-	GLOBAL_H,
 } from "./constants";
 
 function randomInteger(min, max) {
