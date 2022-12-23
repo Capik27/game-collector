@@ -1,8 +1,6 @@
-.App{
-  position: relative;
-}
 
 .stats{
+  cursor: default;
   position: absolute;
   left: 5px;
   bottom: 20px;
@@ -23,7 +21,32 @@
 }
 
 .detector{
+  z-index: 1;
   position: absolute;
   background-color: red;
   height: 5px;
+}
+
+.ball{
+  z-index: 0;
+  position: absolute;
+  top:-10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  background-color: #000;
+}
+
+
+kek{
+  animation: fall 4s linear forwards;
+  transform: translateY(600px);
+  transition-property: transform;
+  transition-duration: 9s;
+}
+@keyframes fall{
+  from{top: -10px}
+  to{top: 600px}
 }

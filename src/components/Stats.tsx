@@ -9,7 +9,7 @@ export function Stats() {
 			<span>Collected: {collected}</span>
 			<span>Missed: {missed}</span>
 			<span>Total: {total}</span>
-			<span>Winrate: {winrate}</span>
+			<span>Winrate: {winrate}%</span>
 		</div>
 	);
 }

@@ -1,37 +1,34 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ITEM_SIZE, X_LIMIT, Y_LIMIT, Y_START_DEFAULT } from "../constants";
+import { ITEM_SIZE } from "../constants";
 import { addPoint, missPoint } from "../store/statsSlice";
 
-interface ItemProps {
+interface BallProps {
 	deleteItem: Function;
 	id: string; // date
 	speed: number; // distance in second
-	pos_x: number;
-	pos_y: number;
+	target: number;
+	time: number;
+	x: number;
+	y: number;
 }
 
-const period = 40; // time
-
-function randomInteger(min: number, max: number) {
-	let rand = min + Math.random() * (max + 1 - min);
-	return Math.floor(rand);
-}
-
-export function Item(props: ItemProps) {
+export function Ball(props: BallProps) {
+	const [destroyed, setDestroyed] = useState(false);
 	const dispatch = useDispatch();
-	const { deleteItem, id, speed, pos_x: x } = props;
-	const [y, setY] = useState(props.pos_y);
-	const [distance] = useState(speed / period);
+	const { deleteItem, id, target, time, x } = props;
 	const detector = useSelector((state: any) => state.coords);
 
 	useEffect(() => {
-		if (y < Y_LIMIT) {
-			const timer = setTimeout(() => {
-				setY((prev) => prev + distance);
-			}, period);
-			return () => clearTimeout(timer);
-		} else {
+		const ball = document.getElementById(id);
+
+		function destroyBall() {
+			// console.log("ball end", x, detector);
+			ball?.removeEventListener("transitionend", destroyBall);
+			setDestroyed(true);
+		}
+
+		if (destroyed) {
 			if (isIntersection(detector, x)) {
 				dispatch(addPoint());
 				const elem: any = document.querySelector(".detector");
@@ -44,8 +41,20 @@ export function Item(props: ItemProps) {
 				dispatch(missPoint());
 			}
 			deleteItem({ id });
+		} else {
+			const timer = setTimeout(() => {
+				if (ball) {
+					ball.addEventListener("transitionend", destroyBall);
+					ball.style.left = x + "px";
+					ball.style.transform = `translateY(${target}px)`;
+					ball.style.transitionProperty = `transform`;
+					ball.style.transitionDuration = `${time}s`;
+					ball.style.transitionTimingFunction = `linear`;
+				}
+			}, 20);
+			return () => clearTimeout(timer);
 		}
-	}, [y, distance, id, deleteItem, dispatch, x, detector]);
+	}, [destroyed]);
 
 	function isIntersection(detector_pos: any, x: number) {
 		const x1_limit = detector_pos.x1 - ITEM_SIZE / 2;
@@ -55,5 +64,5 @@ export function Item(props: ItemProps) {
 		return item_center >= x1_limit && item_center <= x2_limit;
 	}
 
-	return <div className="item" style={{ top: y, left: x }}></div>;
+	return <div className="ball" id={id}></div>;
 }

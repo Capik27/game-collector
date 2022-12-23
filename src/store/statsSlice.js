@@ -14,18 +14,18 @@ const statsSlice = createSlice({
 		addPoint(state) {
 			state.collected = state.collected + 1;
 			state.total = state.collected + state.missed;
-			state.winrate = ((state.collected / state.total) * 100).toFixed(0) + "%";
+			state.winrate = ((state.collected / state.total) * 100).toFixed(0);
 		},
 		missPoint(state) {
 			state.missed = state.missed + 1;
 			state.total = state.collected + state.missed;
-			state.winrate = ((state.collected / state.total) * 100).toFixed(0) + "%";
+			state.winrate = ((state.collected / state.total) * 100).toFixed(0);
 		},
 		updateTotal(state) {
 			state.total = state.collected + state.missed;
 		},
 		updateWinrate(state) {
-			state.winrate = ((state.collected / state.total) * 100).toFixed(0) + "%";
+			state.winrate = ((state.collected / state.total) * 100).toFixed(0);
 		},
 	},
 });

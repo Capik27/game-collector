@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { X_LIMIT, Y_LIMIT, DETECTOR_HEIGHT } from "../constants";
+import { X_LIMIT, Y_LIMIT, DETECTOR_HEIGHT, ITEM_SIZE } from "../constants";
 import { setCoords } from "../store/coordsSlice";
 
 interface DetectorSize {
@@ -13,12 +13,11 @@ export function Detector({ size }: DetectorSize) {
 
 	const mouseMoveHandler = (event: any) => {
 		const cursor_posX = event.clientX;
-		// const pos = event.clientX - size / 2;
-		// console.log("x", cursor_posX, "end", X_LIMIT + DETECTOR_HEIGHT);
+
 		if (cursor_posX < size / 2) {
 			setX(0);
-		} else if (cursor_posX > X_LIMIT + DETECTOR_HEIGHT - size / 2) {
-			setX(X_LIMIT + DETECTOR_HEIGHT - size);
+		} else if (cursor_posX > X_LIMIT + ITEM_SIZE / 2 - size / 2) {
+			setX(X_LIMIT + ITEM_SIZE / 2 - size);
 		} else {
 			setX(cursor_posX - size / 2);
 		}
