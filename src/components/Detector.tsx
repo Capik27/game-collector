@@ -20,7 +20,7 @@ export function Detector() {
 		const cursor_posX = event.clientX;
 
 		if (event.pointerType === "touch" && event.isPrimary) {
-			console.log("touch", cursor_posX, event.width);
+			// console.log("touch", cursor_posX, event.width);
 		}
 
 		if (cursor_posX < size / 2) {
@@ -32,19 +32,6 @@ export function Detector() {
 		}
 		dispatch(setCoords({ x1: x, x2: x + size }));
 	};
-
-	// const addTouchListener = () => {
-	// 	window.addEventListener("pointermove", moveHandler);
-	// 	// window.addEventListener("pointerup", moveHandler);
-	// 	//
-	// 	window.removeEventListener("pointerdown", addTouchListener);
-	// };
-
-	//MOUSE
-	// useEffect(() => {
-	// 	window.addEventListener("mousemove", moveHandler);
-	// 	return () => window.removeEventListener("mousemove", moveHandler);
-	// });
 
 	//TOUCH + MOUSE
 	useEffect(() => {
