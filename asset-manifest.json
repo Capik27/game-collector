@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/game-collector/static/css/main.50a54543.css",
+    "main.css": "/game-collector/static/css/main.87cf0ee1.css",
     "main.js": "/game-collector/static/js/main.f565fb29.js",
     "index.html": "/game-collector/index.html",
-    "main.50a54543.css.map": "/game-collector/static/css/main.50a54543.css.map",
+    "main.87cf0ee1.css.map": "/game-collector/static/css/main.87cf0ee1.css.map",
     "main.f565fb29.js.map": "/game-collector/static/js/main.f565fb29.js.map"
   },
   "entrypoints": [
-    "static/css/main.50a54543.css",
+    "static/css/main.87cf0ee1.css",
     "static/js/main.f565fb29.js"
   ]
 }
