@@ -15,6 +15,8 @@ interface BallProps {
 	y: number;
 }
 
+const grabDelay: number = 50;
+const animDelay: number = 20;
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
@@ -40,13 +42,13 @@ export function Ball(props: BallProps) {
 				const timer = setTimeout(() => {
 					det.style.backgroundColor = "red";
 					clearTimeout(timer);
-				}, 50);
+				}, grabDelay);
 			} else {
 				dispatch(missPoint());
 			}
 			deleteItem({ id });
 		} else {
-			const timer = setTimeout(() => {
+			const anim_timer = setTimeout(() => {
 				if (ball) {
 					ball.addEventListener("transitionend", destroyBall);
 					ball.style.left = x + "px";
@@ -55,8 +57,16 @@ export function Ball(props: BallProps) {
 					ball.style.transitionDuration = `${time}s`;
 					ball.style.transitionTimingFunction = `linear`;
 				}
-			}, 20);
-			return () => clearTimeout(timer);
+			}, animDelay);
+
+			const timecheck_timer = setTimeout(() => {
+				destroyBall();
+			}, time * 1000 + animDelay * 2);
+
+			return () => {
+				clearTimeout(anim_timer);
+				clearTimeout(timecheck_timer);
+			};
 		}
 	}, [destroyed]);
 
