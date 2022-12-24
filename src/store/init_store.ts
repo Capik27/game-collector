@@ -1,10 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import coordsSlice from "./coordsSlice";
+import detectorSlice from "./detectorSlice";
 import statsSlice from "./statsSlice";
 
 const rootReducer = combineReducers({
-	coords: coordsSlice,
+	detector: detectorSlice,
 	stats: statsSlice,
 });
 
 export const store = configureStore({ reducer: rootReducer });
+console.log('store')

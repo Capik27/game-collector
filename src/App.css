@@ -39,7 +39,7 @@ body{
   opacity: 0;
   position: absolute;
   left: 5px;
-  bottom: 105px;
+  bottom: 115px;
   animation: fall 1s linear forwards;
 }
 
@@ -50,7 +50,7 @@ body{
   width: 100vw;
   overflow-x: hidden;
   overflow-y: hidden;
-  animation: mask 1s linear forwards;
+  animation: mask 1.5s linear forwards;
 }
 
 kek{
@@ -73,9 +73,11 @@ kek{
 
 @keyframes mask{
   from{
-    background-color: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0);
+    opacity: 0;
   }
   to{
-    background-color: rgba(0, 0, 0, 0.144);
+    background: rgba(0, 0, 0, 0.144);
+    opacity: 1;
   }
 }

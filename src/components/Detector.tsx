@@ -1,27 +1,24 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import {
-	X_LIMIT,
-	Y_LIMIT,
-	DETECTOR_HEIGHT,
-	ITEM_SIZE,
-	GLOBAL_W,
-} from "../constants";
-import { setCoords } from "../store/coordsSlice";
-
-const size =
-	GLOBAL_W > 600 ? (GLOBAL_W > 800 ? (GLOBAL_W > 1000 ? 100 : 80) : 60) : 40;
+import { useDispatch, useSelector } from "react-redux";
+import { DETECTOR_HEIGHT, ITEM_SIZE } from "../constants";
+import { setCoords } from "../store/detectorSlice";
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 export function Detector() {
 	const dispatch = useDispatch();
+	const size = useSelector((state: any) => state.detector.width);
+	const { X_LIMIT, Y_LIMIT } = useSelector(
+		(state: any) => state.detector.limits
+	);
 	const [x, setX] = useState(X_LIMIT / 2);
 
 	const moveHandler = (event: any) => {
 		const cursor_posX = event.clientX;
 
-		if (event.pointerType === "touch" && event.isPrimary) {
-			// console.log("touch", cursor_posX, event.width);
-		}
+		// if (event.pointerType === "touch" && event.isPrimary) {
+		// 	// console.log("touch", cursor_posX, event.width);
+		// }
 
 		if (cursor_posX < size / 2) {
 			setX(0);

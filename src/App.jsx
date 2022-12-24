@@ -19,6 +19,7 @@ function randomInteger(min, max) {
 }
 
 function App() {
+	const { X_LIMIT, Y_LIMIT } = useSelector((state) => state.detector.limits);
 	const { winrate, missed } = useSelector((state) => state.stats);
 	const [count, setCount] = useState(0);
 	const [items, setItems] = useState([]);

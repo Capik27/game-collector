@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ITEM_SIZE } from "../constants";
 import { addPoint, missPoint } from "../store/statsSlice";
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 interface BallProps {
 	deleteItem: Function;
@@ -13,11 +15,14 @@ interface BallProps {
 	y: number;
 }
 
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
 export function Ball(props: BallProps) {
-	const [destroyed, setDestroyed] = useState(false);
 	const dispatch = useDispatch();
+	const [destroyed, setDestroyed] = useState(false);
 	const { deleteItem, id, target, time, x } = props;
-	const detector = useSelector((state: any) => state.coords);
+	const detector = useSelector((state: any) => state.detector.coords);
 
 	useEffect(() => {
 		const ball = document.getElementById(id);
@@ -30,10 +35,10 @@ export function Ball(props: BallProps) {
 		if (destroyed) {
 			if (isIntersection(detector, x)) {
 				dispatch(addPoint());
-				const elem: any = document.querySelector(".detector");
-				elem.style.backgroundColor = "black";
+				const det: any = document.querySelector(".detector");
+				det.style.backgroundColor = "black";
 				const timer = setTimeout(() => {
-					elem.style.backgroundColor = "red";
+					det.style.backgroundColor = "red";
 					clearTimeout(timer);
 				}, 50);
 			} else {

@@ -7,6 +7,7 @@ import { store } from "./store/init_store";
 import { Detector } from "./components/Detector";
 import { Stats } from "./components/Stats";
 import { Provider } from "react-redux";
+console.log("index");
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
