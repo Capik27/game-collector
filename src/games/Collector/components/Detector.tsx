@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DETECTOR_HEIGHT, ITEM_SIZE } from "../constants";
-import { setCoords } from "../store/detectorSlice";
+import { DETECTOR_HEIGHT, ITEM_SIZE } from "../../../constants";
+import { setCoords } from "../../../store/detectorSlice";
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 

@@ -1,0 +1,69 @@
+  
+  .choice{
+    display: flex;
+    gap:20px;
+  }
+  
+  .choice__item{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    color:rgba(0, 0, 0, 0.247);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    
+  }
+
+  .choice__item_enabled:hover{
+    cursor: pointer;
+    background-color: rgb(239, 239, 239);
+    color:rgba(0, 0, 0, 0.411);
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0);
+  }
+
+  .choice__item_enabled{
+    background-color: rgb(244, 244, 244);
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.33s, color 0.33s, box-shadow 0.33s;
+  }
+
+  .choice__item_disabled{
+    background-color: rgb(239, 239, 239);
+    color:rgba(0, 0, 0, 0.411);
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0);
+  }
+
+
+  .red{
+    background-color: rgb(255, 55, 55);
+  }
+  .green{
+    background-color: rgb(0, 255, 0);
+  }
+
+.db_stats{
+  position: absolute;
+  font-size: 12px;
+  top: 5px;
+  left: 5px;
+  color:rgba(0, 0, 0, 0.288)
+}
+
+.db_stats span{
+  display: block;
+}
+
+
+  .fadeBTN{
+    animation: fadeBTN 0.9s linear forwards;
+  }
+
+  @keyframes fadeBTN{
+    from{
+      opacity: 1;
+    }
+    to{
+      opacity: 0;
+    }
+  }

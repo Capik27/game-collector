@@ -1,0 +1,29 @@
+.stats{
+    cursor: default;
+    position: absolute;
+    left: 5px;
+    bottom: 20px;
+    color:rgba(0, 0, 0, 0.288)
+  }
+  .stats span{
+    display: block;
+  }
+  
+  .detector{
+    z-index: 1;
+    position: absolute;
+    background-color: red;
+    height: 5px;
+  }
+  
+  .ball{
+    z-index: 0;
+    position: absolute;
+    top:-10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.438);
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.856);
+  }

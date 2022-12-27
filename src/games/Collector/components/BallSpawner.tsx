@@ -1,32 +1,26 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import "./App.css";
-import { Ball } from "./components/Ball";
-import { Restart } from "./components/Restart";
+import { Ball } from "./Ball";
+import { Restart } from "./Restart";
 import {
 	ITEM_SIZE,
-	X_LIMIT,
-	Y_LIMIT,
 	Y_START_DEFAULT,
 	SPEED_A,
 	SPEED_B,
 	GAME_OVER,
-} from "./constants";
+	randomInteger,
+} from "../../../constants";
 
-function randomInteger(min, max) {
-	let rand = min + Math.random() * (max + 1 - min);
-	return Math.floor(rand);
-}
-
-function App() {
-	const { X_LIMIT, Y_LIMIT } = useSelector((state) => state.detector.limits);
-	const { winrate, missed } = useSelector((state) => state.stats);
+export function BallSpawner() {
+	const { X_LIMIT, Y_LIMIT } = useSelector(
+		(state: any) => state.detector.limits
+	);
+	const { winrate, missed } = useSelector((state: any) => state.stats);
 	const [count, setCount] = useState(0);
 	const [items, setItems] = useState([]);
 
-	function deleteItem(deleted) {
-		// console.log("ITEMs", items);
-		setItems((prev) => prev.filter((item) => item.id !== deleted.id));
+	function deleteItem(deleted: any) {
+		setItems((prev) => prev.filter((item: any) => item.id !== deleted.id));
 	}
 
 	function createBall() {
@@ -50,16 +44,19 @@ function App() {
 				const item_count = randomInteger(1, max_count);
 				for (let i = 0; i < item_count; i++) {
 					const ball = createBall();
-					setItems((prev) => [
-						...prev,
-						{
-							id: ball.id,
-							speed: ball.speed,
-							target: ball.target,
-							time: ball.time,
-							x: ball.x,
-						},
-					]);
+					setItems((prev) => {
+						const newState: any = [
+							...prev,
+							{
+								id: ball.id,
+								speed: ball.speed,
+								target: ball.target,
+								time: ball.time,
+								x: ball.x,
+							},
+						];
+						return newState;
+					});
 				}
 				setCount((prev) => prev + item_count);
 			}, randomInteger(1, 3) * 1000);
@@ -71,7 +68,7 @@ function App() {
 
 	return (
 		<>
-			{items.map((item) => (
+			{items.map((item: any) => (
 				<Ball
 					key={item.id}
 					id={item.id}
@@ -87,5 +84,3 @@ function App() {
 		</>
 	);
 }
-
-export default App;

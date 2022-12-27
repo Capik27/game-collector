@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ITEM_SIZE } from "../constants";
-import { addPoint, missPoint } from "../store/statsSlice";
+import { ITEM_SIZE } from "../../../constants";
+import { addPoint, missPoint } from "../../../store/statsSlice";
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 

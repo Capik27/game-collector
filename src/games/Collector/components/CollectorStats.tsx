@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-export function Stats() {
+export function CollectorStats() {
 	const { collected, missed, total, winrate } = useSelector(
 		(state: any) => state.stats
 	);
