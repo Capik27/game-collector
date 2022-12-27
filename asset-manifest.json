@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/game-collector/static/css/main.db62d880.css",
-    "main.js": "/game-collector/static/js/main.aa098798.js",
+    "main.css": "/game-collector/static/css/main.3358ef3c.css",
+    "main.js": "/game-collector/static/js/main.6fac0f60.js",
     "index.html": "/game-collector/index.html",
-    "main.db62d880.css.map": "/game-collector/static/css/main.db62d880.css.map",
-    "main.aa098798.js.map": "/game-collector/static/js/main.aa098798.js.map"
+    "main.3358ef3c.css.map": "/game-collector/static/css/main.3358ef3c.css.map",
+    "main.6fac0f60.js.map": "/game-collector/static/js/main.6fac0f60.js.map"
   },
   "entrypoints": [
-    "static/css/main.db62d880.css",
-    "static/js/main.aa098798.js"
+    "static/css/main.3358ef3c.css",
+    "static/js/main.6fac0f60.js"
   ]
 }
