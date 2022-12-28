@@ -33,7 +33,11 @@ export function Thinker() {
 				? changedDB[changedDB.length - 1][index]
 				: undefined;
 
-		const isReverse: boolean = lastChoice === prelastChoice ? false : true;
+		const isReverse = prelastChoice
+			? lastChoice === prelastChoice
+				? false
+				: true
+			: undefined;
 		// console.log("changedDB", changedDB);
 		console.log("lastChoice", lastChoice, "prelast", prelastChoice);
 		console.log("isReverse", isReverse);
@@ -53,6 +57,9 @@ export function Thinker() {
 
 		console.log(rangedDB, percentA + "% = А");
 
+		const res = randomInteger(0, 1) ? "A" : "B";
+		if (percentA === 100 || percentA === 0) return res;
+
 		const chance = randomInteger(1, 100);
 		console.log("chance", chance + "%");
 		if (percentA > 50) {
@@ -60,9 +67,8 @@ export function Thinker() {
 		} else if (percentA < 50) {
 			return chance > percentA ? "A" : "B";
 		} else {
-			const res = randomInteger(0, 1) ? "A" : "B";
 			if (rangedDB.A === 0 && rangedDB.B === 0) return res;
-			return isReverse ? lastChoice : res;
+			return res;
 		}
 	}
 
